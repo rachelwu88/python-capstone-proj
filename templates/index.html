@@ -1,0 +1,127 @@
+<!-- Rachel Wu -->
+<!-- Loan Eligibility Predictor HTML FILE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3b5c2b;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 5% auto;
+            padding: 20px;
+            background: rgb(223, 241, 206);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #4cae4c;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Approval Prediction</h1>
+        <form action="/" method="POST">
+            <label for="Gender">Gender:</label>
+            <select name="Gender" id="Gender" required>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+
+            <label for="Married">Married:</label>
+            <select name="Married" id="Married" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Education">Education:</label>
+            <select name="Education" id="Education" required>
+                <option value="1">Graduate</option>
+                <option value="0">Not Graduate</option>
+            </select>
+
+            <label for="Self_Employed">Self Employed:</label>
+            <select name="Self_Employed" id="Self_Employed" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="ApplicantIncome">Applicant Income:</label>
+            <input type="number" name="ApplicantIncome" id="ApplicantIncome" required>
+
+            <label for="CoapplicantIncome">Coapplicant Income:</label>
+            <input type="number" name="CoapplicantIncome" id="CoapplicantIncome" required>
+
+            <label for="LoanAmount">Loan Amount:</label>
+            <input type="number" name="LoanAmount" id="LoanAmount" required>
+
+            <label for="Loan_Amount_Term">Loan Amount Term:</label>
+            <input type="number" name="Loan_Amount_Term" id="Loan_Amount_Term" required>
+
+            <label for="Credit_History">Credit History:</label>
+            <select name="Credit_History" id="Credit_History" required>
+                <option value="1">Good</option>
+                <option value="0">Bad</option>
+            </select>
+
+            <label for="Property_Area">Property Area:</label>
+            <select name="Property_Area" id="Property_Area" required>
+                <option value="2">Urban</option>
+                <option value="1">Semiurban</option>
+                <option value="0">Rural</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if prediction is not none %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>The loan is: <strong>{{ "Approved" if prediction[0] == 1 else "Not Approved" }}</strong></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
